@@ -1,0 +1,23 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BookAirTicketTest">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="com.codeborne.selenide.webdriver.WebDriverFactory" level="OFF"/>
+    <logger name="com.codeborne.selenide.impl.FileHelper" level="OFF"/>
+    <logger name="io.github.bonigarcia.wdm.WebDriverManager" level="OFF"/>
+    <logger name="c.codeborne.selenide.webdriver.HttpClientTimeouts" level="OFF"/>
+    <logger name="com.codeborne.selenide.webdriver.BrowserResizer" level="OFF"/>
+    <logger name="c.c.selenide.drivercommands.CreateDriverCommand" level="OFF"/>
+    <logger name="c.c.selenide.impl.WebDriverThreadLocalContainer" level="OFF"/>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

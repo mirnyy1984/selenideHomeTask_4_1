@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="main_suite" parallel="methods" thread-count="1">
+    <test name="home_page">
+        <classes>
+            <class name="suites.book_air_ticket.BookAirTicketTest"></class>
+        </classes>
+    </test>
+</suite>
