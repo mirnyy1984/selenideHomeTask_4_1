@@ -36,7 +36,6 @@ public class BookAirTicketTest extends TestBase {
                 .checkHeaderLinksCount();
     }
 
-
     @Test
     public void test_3_checkHeaderLinks() {
         homePage
