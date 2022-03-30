@@ -13,7 +13,7 @@ public class TestSuiteBase {
     @BeforeSuite
     public void prepareSuite(ITestContext ctx) {
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
         Configuration.webdriverLogsEnabled = false;
         ScreenShooter.captureSuccessfulTests = true;
 
