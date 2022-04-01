@@ -1,15 +1,15 @@
 package pages;
 
+import static com.codeborne.selenide.Selenide.*;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.ProjectLogger;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.*;
 
 public class WhoIsGoingToFlyPage {
 
@@ -60,11 +60,13 @@ public class WhoIsGoingToFlyPage {
 
     // SCENARIOS =======================================================================================================
 
+
     public WhoIsGoingToFlyPage typeFirstName(String name) {
         firstNameInput.sendKeys(name);
         ProjectLogger.getLogger(this.getClass()).info("Type to element" + "--" + "firstNameInput" + "--" + "text is: " + name);
         return this;
     }
+
 
     public WhoIsGoingToFlyPage typeLastName(String name) {
         lastNameInput.sendKeys(name);
@@ -72,11 +74,13 @@ public class WhoIsGoingToFlyPage {
         return this;
     }
 
+
     public WhoIsGoingToFlyPage setDayOfBirth(String day) {
         dayOfBirth.selectOption(day);
         ProjectLogger.getLogger(this.getClass()).info("Select element" + "--" + "dayOfBirth" + "--" + "text is: " + day);
         return this;
     }
+
 
     public WhoIsGoingToFlyPage setMonthOfBirth(String month) {
         monthOfBirth.selectOption(month);
@@ -84,11 +88,13 @@ public class WhoIsGoingToFlyPage {
         return this;
     }
 
+
     public WhoIsGoingToFlyPage setYearOfBirth(String year) {
         yearOfBirth.selectOption(year);
         ProjectLogger.getLogger(this.getClass()).info("Select element" + "--" + "yearOfBirth" + "--" + "text is: " + year);
         return this;
     }
+
 
     public WhoIsGoingToFlyPage setGender(String gender) {
         genderInput.selectOption(gender);
@@ -96,11 +102,13 @@ public class WhoIsGoingToFlyPage {
         return this;
     }
 
+
     public WhoIsGoingToFlyPage setCitizen(String citizen) {
         citizenInput.selectOption(citizen);
         ProjectLogger.getLogger(this.getClass()).info("Select element" + "--" + "citizenInput" + "--" + "text is: " + citizen);
         return this;
     }
+
 
     public WhoIsGoingToFlyPage setPassportNumber(String number) {
         passportNumberInput.sendKeys(number);
@@ -108,11 +116,13 @@ public class WhoIsGoingToFlyPage {
         return this;
     }
 
+
     public WhoIsGoingToFlyPage setPassportExpirationDay(String day) {
         passportExpirationDay.selectOption(day);
         ProjectLogger.getLogger(this.getClass()).info("Select element" + "--" + "passportExpirationDay" + "--" + "text is: " + day);
         return this;
     }
+
 
     public WhoIsGoingToFlyPage setPassportExpirationMonth(String month) {
         passportExpirationMonth.selectOption(month);
@@ -120,11 +130,13 @@ public class WhoIsGoingToFlyPage {
         return this;
     }
 
+
     public WhoIsGoingToFlyPage setPassportExpirationYear(String year) {
         passportExpirationYear.selectOption(year);
         ProjectLogger.getLogger(this.getClass()).info("Select element" + "--" + "passportExpirationYear" + "--" + "text is: " + year);
         return this;
     }
+
 
     public WhoIsGoingToFlyPage clickNextButton() {
         nextButton.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
@@ -132,11 +144,13 @@ public class WhoIsGoingToFlyPage {
         return page(WhoIsGoingToFlyPage.class);
     }
 
+
     public SeatSelectionPage selectSeat() {
         selectSeat.click();
         ProjectLogger.getLogger(this.getClass()).info("Click element" + "--" + "selectSeat" + "--");
         return page(SeatSelectionPage.class);
     }
+
 
     public YourTicketPage closeStarveModalWindow() {
         try {

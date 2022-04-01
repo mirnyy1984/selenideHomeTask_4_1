@@ -36,6 +36,7 @@ public class BookAirTicketTest extends TestBase {
                 .checkHeaderLinksCount();
     }
 
+
     @Test
     public void test_3_checkHeaderLinks() {
         homePage
@@ -83,6 +84,7 @@ public class BookAirTicketTest extends TestBase {
                 .checkUrl(Routs.SKY_UP_CARGO.getRout());
     }
 
+
     @Test
     public void test_4_checkLogo() {
         homePage.closeWelcomeModalIfPresent();
@@ -95,6 +97,7 @@ public class BookAirTicketTest extends TestBase {
         homePage.closeWelcomeModalIfPresent();
 
         homePage.header
+                .selectDefaultCurrency()
                 .checkMainCurrencyButtonText("₴")
                 .clickMainCurrencyButton()
                 .checkCurrencyPopUpButtonsText("€", "$")
@@ -108,6 +111,7 @@ public class BookAirTicketTest extends TestBase {
                 .checkCurrencyPopUpButtonsText("₴", "€");
     }
 
+
     @Test
     public void test_6_buyAirTicket() {
         homePage.closeWelcomeModalIfPresent();
@@ -116,6 +120,8 @@ public class BookAirTicketTest extends TestBase {
                 .clickMainLanguageButton()
                 .selectLanguage("ENG");
 
+        homePage.acceptCookies();
+
         homePage.airWaySelector
                 .clickDepartureCity()
                 .selectCity("Kyiv")
@@ -123,8 +129,6 @@ public class BookAirTicketTest extends TestBase {
                 .clickArrivalCity()
                 .selectCity("Dubai")
                 .checkArrivalCityTitle("Dubai");
-
-        homePage.acceptCookies();
 
         FlightDate departureFlightDate = homePage.airWaySelector
                 .clickForwardDatePicker()

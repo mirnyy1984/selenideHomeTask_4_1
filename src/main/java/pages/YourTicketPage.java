@@ -1,15 +1,14 @@
 package pages;
 
-import com.codeborne.selenide.*;
-import com.codeborne.selenide.conditions.AttributeWithValue;
-import org.openqa.selenium.By;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.page;
+
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utils.ProjectLogger;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public class YourTicketPage {
 
@@ -33,11 +32,13 @@ public class YourTicketPage {
 
     // SCENARIOS =======================================================================================================
 
+
     public YourTicketPage setEmail(String email) {
         emailInput.shouldBe(Condition.visible).sendKeys(email);
         ProjectLogger.getLogger(this.getClass()).info("Type to element: " + "--" + "emailInput" + "--" + " text is: " + email);
         return this;
     }
+
 
     public YourTicketPage repeatEmail(String email) {
         repeatEmailInput.shouldBe(Condition.visible).sendKeys(email);
@@ -45,11 +46,13 @@ public class YourTicketPage {
         return this;
     }
 
+
     public YourTicketPage setPhoneNumber(String phoneNumber) {
         phoneNumberInput.shouldBe(Condition.visible).sendKeys(phoneNumber);
         ProjectLogger.getLogger(this.getClass()).info("Type to element: " + "--" + "phoneNumberInput" + "--" + " text is: " + phoneNumber);
         return this;
     }
+
 
     public YourTicketPage clickIAgreeCheckbox() {
         iAgreeCheckbox
@@ -60,6 +63,7 @@ public class YourTicketPage {
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + "iAgreeCheckbox" + "--");
         return this;
     }
+
 
     public PaymentPage clickPayButton() {
         executeJavaScript("arguments[0].click()", payButton);

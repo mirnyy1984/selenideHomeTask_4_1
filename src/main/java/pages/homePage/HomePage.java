@@ -24,7 +24,9 @@ public class HomePage {
     @FindBy(how = How.XPATH, using = "//div[@id = 'open-appeal-modal']//button[contains(@class, 'close')]")
     private SelenideElement welcomeModalWindowCloseButton;
 
+
     // SCENARIOS =======================================================================================================
+
 
     public HomePage closeWelcomeModalIfPresent() {
         try {
@@ -37,6 +39,7 @@ public class HomePage {
         }
         return this;
     }
+
 
     public HomePage acceptCookies() {
         $(By.xpath("//div[@id = 'cookieModal']//button")).shouldBe(visible).click();

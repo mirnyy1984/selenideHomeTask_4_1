@@ -42,7 +42,9 @@ public class FlightOptionsPage {
 
     private By returnFlightOptionButtons = By.xpath("//div[@id = 'backwardEconomModal']//span[text() = 'select']");
 
+
     // SCENARIOS =======================================================================================================
+
 
     public FlightOptionsPage checkDepartureFlightTitle(String departureCity, String arrivalCity) {
         departureFlightTitleContainer.shouldHave(Condition.text(departureCity), Duration.ofSeconds(8));
@@ -52,6 +54,7 @@ public class FlightOptionsPage {
         return this;
     }
 
+
     public FlightOptionsPage checkReturnFlightTitle(String departureCity, String returnCity) {
         returnFlightTitleContainer.shouldHave(Condition.text(departureCity), Duration.ofSeconds(8));
         returnFlightTitleContainer.shouldHave(Condition.text(returnCity), Duration.ofSeconds(8));
@@ -59,6 +62,7 @@ public class FlightOptionsPage {
         ProjectLogger.getLogger(this.getClass()).info("Check element title: " + "--" + "ReturnFlightTitle" + "--" + " title contains: " + returnCity);
         return this;
     }
+
 
     public FlightOptionsPage checkDepartureFlightDate(FlightDate date) {
         SelenideElement currentDate = $(departureFlightDate);
@@ -69,6 +73,7 @@ public class FlightOptionsPage {
         return this;
     }
 
+
     public FlightOptionsPage checkReturnFlightDate(FlightDate date) {
         SelenideElement currentDate = $(returnFlightDate);
         currentDate.shouldBe(Condition.visible).shouldHave(Condition.text(date.getDay()));
@@ -78,21 +83,25 @@ public class FlightOptionsPage {
         return this;
     }
 
+
     public FlightOptionsPage setRandomDepartureFlightOption() {
         setRandomDepartureFlightOption(departureFlightOptions, departureFlightOptionButtons);
         return this;
     }
+
 
     public FlightOptionsPage setReturnRandomFlightOption() {
         setRandomDepartureFlightOption(returnFlightOptions, returnFlightOptionButtons);
         return this;
     }
 
+
     public WhoIsGoingToFlyPage clickNextButton() {
         nextButton.shouldBe(Condition.visible).click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + "nextButton" + "--");
         return page(WhoIsGoingToFlyPage.class);
     }
+
 
     private void setRandomDepartureFlightOption(By flightOption, By flightOptionButtons) {
         $(flightOption).shouldBe(Condition.visible).click();

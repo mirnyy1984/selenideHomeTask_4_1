@@ -11,6 +11,7 @@ public class ProjectLogger {
 
     }
 
+
     public static Logger getLogger(Class clazz) {
         if (instance == null) {
             instance = new ProjectLogger();
@@ -18,6 +19,4 @@ public class ProjectLogger {
         }
             return logger;
     }
-
-
 }

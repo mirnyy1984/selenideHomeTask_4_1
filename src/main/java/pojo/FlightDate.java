@@ -1,27 +1,29 @@
 package pojo;
 
 public class FlightDate {
-    private String day;
-    private String month;
+    private final String DAY;
+    private final String MONTH;
 
     public FlightDate(String day, String month) {
-        this.day = day;
-        this.month = month;
+        this.DAY = day;
+        this.MONTH = month;
     }
 
     public String getDay() {
-        return day;
+        return DAY;
     }
 
+
     public String getMonth() {
-        return month;
+        return MONTH;
     }
+
 
     @Override
     public String toString() {
         return "FlightDate{" +
-                "day='" + day + '\'' +
-                ", month='" + month + '\'' +
+                "day='" + DAY + '\'' +
+                ", month='" + MONTH + '\'' +
                 '}';
     }
 }

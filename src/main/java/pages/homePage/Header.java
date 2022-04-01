@@ -1,7 +1,8 @@
 package pages.homePage;
 
-import com.codeborne.selenide.*;
-import com.codeborne.selenide.impl.Waiter;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -10,10 +11,11 @@ import utils.ProjectLogger;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.*;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.webdriver;
+import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class Header {
 
@@ -46,6 +48,7 @@ public class Header {
     @FindBy(how = How.XPATH, using = "//button[@id = 'headerLogin']")
     private SelenideElement loginButton;
 
+
     // SCENARIOS =======================================================================================================
 
 
@@ -54,6 +57,7 @@ public class Header {
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--mainLanguageButton--");
         return this;
     }
+
 
     public Header selectLanguage(String language) {
         languagePopUp.shouldBe(visible);
@@ -64,11 +68,13 @@ public class Header {
         return this;
     }
 
+
     public Header checkMainLanguageButtonText(String text) {
         mainLanguageButton.shouldBe(text(text));
         ProjectLogger.getLogger(this.getClass()).info("Check element text: " + "--mainLanguageButton--" + " text is " + "\"" + text + "\"");
         return this;
     }
+
 
     public Header checkLanguagePopUpButtonsText(String firstButtonLanguageText) {
         languagePopUp.shouldBe(visible);
@@ -82,6 +88,7 @@ public class Header {
         return this;
     }
 
+
     public Header checkHeaderLinksCount() {
         Assert.assertEquals(headerLinks.size(), 7);
         ProjectLogger.getLogger(this.getClass()).info("Check element: " + "--headerLinks--" + " count is " + headerLinks.size());
@@ -90,10 +97,11 @@ public class Header {
 
 
     public Header clickHeaderLink(String linkText) {
-        headerLinks.find(Condition.text(linkText)).click();
+        headerLinks.find(Condition.text(linkText)).shouldBe(visible).click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + linkText + "--");
         return this;
     }
+
 
     public Header clickHeaderDropdownLink(String linkText) {
         $$(By.xpath("//a[contains(@class, 'header-dropdown__link')]/span")).find(Condition.text(linkText)).click();
@@ -101,17 +109,20 @@ public class Header {
         return this;
     }
 
+
     public Header hoverHeaderLink(String linkText) {
         headerLinks.find(Condition.text(linkText)).hover();
         ProjectLogger.getLogger(this.getClass()).info("Hover element: " + "--" + linkText + "--");
         return this;
     }
 
+
     public Header checkUrl(String pageRout) {
         webdriver().shouldHave(urlContaining(pageRout));
         ProjectLogger.getLogger(this.getClass()).info("Check page url: " + pageRout);
         return this;
     }
+
 
     public void checkLogoIsVisible() {
         logo.shouldBe(visible);
@@ -125,12 +136,23 @@ public class Header {
         return this;
     }
 
+
     public Header selectCurrency(String currency) {
         currencyPopUp.shouldBe(visible);
         currencyButtons.stream().filter(button -> button.getText().equalsIgnoreCase(currency)).findFirst().get().click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + currency + " Button" + "--");
         return this;
     }
+
+
+    public Header selectDefaultCurrency() {
+        if (!mainCurrencyButton.getOwnText().contains("₴")) {
+            clickMainCurrencyButton().selectCurrency("₴");
+            ProjectLogger.getLogger(this.getClass()).info("Set default currency: " + "--" + "₴" + " Button" + "--");
+        }
+        return this;
+    }
+
 
     public Header checkMainCurrencyButtonText(String text) {
         mainCurrencyButton.shouldHave(text(text));

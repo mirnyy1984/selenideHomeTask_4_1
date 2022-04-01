@@ -2,8 +2,10 @@ package pages;
 
 import static com.codeborne.selenide.Selenide.*;
 
-import com.codeborne.selenide.*;
-import com.codeborne.selenide.impl.Waiter;
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -37,7 +39,9 @@ public class SeatSelectionPage {
 
     private By backwardFlightSelectedSeatCheckbox = By.xpath("(//span[contains(@class, 'checkbox-title')])[2]");
 
+
     // SCENARIOS =======================================================================================================
+
 
     public SeatSelectionPage selectForwardFlightSeat() {
         selectRandomSeat(forwardFlightSeats, forwardFlightSelectedSeatCheckbox);
@@ -45,11 +49,13 @@ public class SeatSelectionPage {
         return this;
     }
 
+
     public SeatSelectionPage selectBackwardFlightSeat() {
         selectRandomSeat(backwardFlightSeats, backwardFlightSelectedSeatCheckbox);
         ProjectLogger.getLogger(this.getClass()).info("Select element" + "--" + "selectBackwardFlightSeat" + "--");
         return this;
     }
+
 
     public WhoIsGoingToFlyPage clickContinueButton() {
         continueButton.shouldBe(Condition.visible).click();
@@ -57,11 +63,13 @@ public class SeatSelectionPage {
         return page(WhoIsGoingToFlyPage.class);
     }
 
+
     public SeatSelectionPage openBackWardFlyTab() {
         backwardFlyTabButton.click();
         ProjectLogger.getLogger(this.getClass()).info("Click element" + "--" + "backwardFlyTabButton" + "--");
         return this;
     }
+
 
     private SeatSelectionPage selectRandomSeat(By flightSeats, By selectedSeatCheckbox) {
         ElementsCollection elements = $$(flightSeats);

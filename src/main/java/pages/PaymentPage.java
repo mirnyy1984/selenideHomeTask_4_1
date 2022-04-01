@@ -20,7 +20,9 @@ public class PaymentPage {
     @FindBy(how = How.XPATH, using = "//input[@id = 'cvv2']")
     private SelenideElement cardCvvCodeInput;
 
+
     // SCENARIOS =======================================================================================================
+
 
     public PaymentPage setCardNumber(String cardNumber) {
         Assert.assertEquals(cardNumber.length(), 16);
@@ -39,6 +41,7 @@ public class PaymentPage {
         return this;
     }
 
+
     public PaymentPage setCardExpirationDate(String date) {
         String[] dates = date.split("/");
         Assert.assertEquals(dates.length, 2);
@@ -46,9 +49,11 @@ public class PaymentPage {
         for (String dateData : dates) {
             cardExpirationDateInput.shouldBe(Condition.visible).sendKeys(dateData);
         }
+
         ProjectLogger.getLogger(this.getClass()).info("Type to element: " + "--" + "cardExpirationDateInput" + "--" + "text: " + date);
         return this;
     }
+
 
     public PaymentPage setCardCvvCode(String cvvCode) {
         Assert.assertEquals(cvvCode.length(), 3);

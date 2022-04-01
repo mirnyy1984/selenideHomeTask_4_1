@@ -52,11 +52,13 @@ public class AirWaySelector {
         return this;
     }
 
+
     public AirWaySelector clickArrivalCity() {
         arrivalCity.shouldBe(Condition.visible).click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + "arrivalCity" + "--");
         return this;
     }
+
 
     public AirWaySelector checkDepartureCityTitle(String title) {
         departureCity.$(By.xpath(".//input[@id = 'deprtureCityName']")).shouldHave(Condition.value(title));
@@ -64,11 +66,13 @@ public class AirWaySelector {
         return this;
     }
 
+
     public AirWaySelector checkArrivalCityTitle(String title) {
         arrivalCity.$(By.xpath(".//input[@id = 'arrivalCityName']")).shouldHave(Condition.value(title));
         ProjectLogger.getLogger(this.getClass()).info("Check element title: " + "--" + "arrivalCity" + "--" + " title is: " + title);
         return this;
     }
+
 
     public AirWaySelector selectCity(String cityName) {
         new ArrayList<>($$(citiesListPath))
@@ -83,17 +87,20 @@ public class AirWaySelector {
         return this;
     }
 
+
     public AirWaySelector clickForwardDatePicker() {
         forwardDatePicker.shouldBe(Condition.visible).scrollTo().click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + "forwardDatePicker" + "--");
         return this;
     }
 
+
     public AirWaySelector clickBackwardCityDatePicker() {
         backwardCityDatePicker.shouldBe(Condition.visible).click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + "backwardCityDatePicker" + "--");
         return this;
     }
+
 
     public FlightDate selectAvailableDay() {
         ElementsCollection days = $$(availableDaysPath);
@@ -118,11 +125,13 @@ public class AirWaySelector {
         return new FlightDate(day.getOwnText(), month);
     }
 
+
     public FlightOptionsPage clickShowFlightsButton() {
         $(By.xpath("//button[@id = 'searchBtn']")).shouldBe(Condition.visible).click();
         ProjectLogger.getLogger(this.getClass()).info("Click element: " + "--" + "ShowFlightsButton" + "--");
         return page(FlightOptionsPage.class);
     }
+
 
     private boolean isAvailableDayPresent(ElementsCollection days) {
         return days.size() > 0;
